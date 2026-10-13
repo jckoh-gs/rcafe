@@ -1,0 +1,209 @@
+.admin-requests {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-requests__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.admin-requests__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.admin-requests__chip {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.admin-requests__chip[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.admin-requests__collector,
+.admin-requests__notice,
+.admin-requests__error,
+.admin-requests__empty {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.admin-requests__collector {
+  background: var(--surface-2);
+  color: var(--ink-soft);
+}
+
+.admin-requests__collector[data-running='true'] {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.admin-requests__notice {
+  background: var(--open-bg);
+  color: var(--open-ink);
+}
+
+.admin-requests__error {
+  background: var(--closed-bg);
+  color: var(--closed-ink);
+}
+
+.admin-requests__empty {
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.admin-requests__caption {
+  padding: 0 0 8px;
+  text-align: left;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.admin-requests__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admin-requests__table th {
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--line);
+  text-align: left;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.admin-requests__table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.admin-requests__table small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+}
+
+.admin-requests__status {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--chip-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.admin-requests__status[data-status='running'] {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+}
+
+.admin-requests__status[data-status='done'] {
+  background: var(--open-bg);
+  color: var(--open-ink);
+}
+
+.admin-requests__status[data-status='failed'] {
+  background: var(--closed-bg);
+  color: var(--closed-ink);
+}
+
+.admin-requests__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-requests__actions .btn {
+  padding: 6px 12px;
+  font-size: 0.82rem;
+}
+
+.admin-requests__ask {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--closed-ink);
+}
+
+.btn--danger {
+  background: var(--closed-ink);
+  color: var(--on-accent);
+}
+
+/* narrow screens: every row becomes a card with labelled lines */
+@media (max-width: 720px) {
+  .admin-requests__table,
+  .admin-requests__table tbody,
+  .admin-requests__table tr,
+  .admin-requests__table td {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-requests__caption {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-requests__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .admin-requests__table tr {
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    overflow: hidden;
+  }
+
+  .admin-requests__table td {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 4px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .admin-requests__table td::before {
+    content: attr(data-label);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+
+  .admin-requests__table td:last-child {
+    border-bottom: 0;
+    justify-content: flex-start;
+  }
+
+  .admin-requests__table td:last-child::before {
+    display: none;
+  }
+}

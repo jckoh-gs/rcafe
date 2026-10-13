@@ -1,0 +1,180 @@
+# Runs the same quality gates as the Claude Code hook, for every backend/frontend in the repo.
+# A directory is checked once it has been set up by the setup-quality-gates skill:
+#   backend  = pyproject.toml containing [tool.importlinter]   (uv-managed)
+#   frontend = package.json next to a steiger.config.*
+#   mobile   = Flutter app: pubspec.yaml next to tool/check_layers.sh
+#   terraform = every directory containing *.tf (modules and compositions)
+name: quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    outputs:
+      backends: ${{ steps.find.outputs.backends }}
+      frontends: ${{ steps.find.outputs.frontends }}
+      mobiles: ${{ steps.find.outputs.mobiles }}
+      terraform: ${{ steps.find.outputs.terraform }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: find
+        run: |
+          backends=$(git ls-files '*pyproject.toml' \
+            | xargs -r grep -l '^\[tool\.importlinter\]' \
+            | xargs -r -n1 dirname | jq -R . | jq -sc .)
+          frontends=$(git ls-files '*steiger.config.*' \
+            | xargs -r -n1 dirname | sort -u \
+            | while read -r d; do [ -f "$d/package.json" ] && echo "$d"; done \
+            | jq -R . | jq -sc .)
+          mobiles=$(git ls-files '*tool/check_layers.sh' \
+            | xargs -r -n1 dirname | xargs -r -n1 dirname | sort -u \
+            | while read -r d; do [ -f "$d/pubspec.yaml" ] && echo "$d"; done \
+            | jq -R . | jq -sc .)
+          echo "mobiles=$mobiles" >> "$GITHUB_OUTPUT"
+          echo "backends=$backends" >> "$GITHUB_OUTPUT"
+          echo "frontends=$frontends" >> "$GITHUB_OUTPUT"
+          terraform=$(git ls-files '*.tf' | xargs -r -n1 dirname | sort -u | jq -R . | jq -sc .)
+          echo "terraform=$terraform" >> "$GITHUB_OUTPUT"
+          echo "backends: $backends"; echo "frontends: $frontends"; echo "mobiles: $mobiles"; echo "terraform: $terraform"
+
+  backend:
+    needs: discover
+    if: needs.discover.outputs.backends != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dir: ${{ fromJson(needs.discover.outputs.backends) }}
+    defaults:
+      run:
+        working-directory: ${{ matrix.dir }}
+    name: backend (${{ matrix.dir }})
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync
+      - run: uv run ruff format --check .
+      - run: uv run ruff check .
+      - run: uv run mypy
+      - run: uv run lint-imports
+      - name: Unit tests (integration tests need Postgres and run locally)
+        run: |
+          if [ -d tests ]; then uv run pytest -q -m "not integration"; fi
+
+  frontend:
+    needs: discover
+    if: needs.discover.outputs.frontends != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dir: ${{ fromJson(needs.discover.outputs.frontends) }}
+    defaults:
+      run:
+        working-directory: ${{ matrix.dir }}
+    name: frontend (${{ matrix.dir }})
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install
+        run: |
+          if [ -f pnpm-lock.yaml ]; then corepack enable && pnpm install --frozen-lockfile
+          elif [ -f yarn.lock ]; then corepack enable && yarn install --immutable
+          else npm ci
+          fi
+      - name: ESLint
+        run: |
+          if ls eslint.config.* .eslintrc* >/dev/null 2>&1; then npx eslint .
+          else echo "no ESLint config, skipping"
+          fi
+      - name: Typecheck
+        run: |
+          if grep -q '"typecheck"[[:space:]]*:' package.json; then npm run typecheck
+          else npx tsc --noEmit -p .
+          fi
+      - name: FSD boundaries (Steiger)
+        run: npx steiger ./src
+      - name: Unit tests
+        run: |
+          if grep -q '"test"[[:space:]]*:' package.json; then npm test; fi
+
+  mobile:
+    needs: discover
+    if: needs.discover.outputs.mobiles != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dir: ${{ fromJson(needs.discover.outputs.mobiles) }}
+    defaults:
+      run:
+        working-directory: ${{ matrix.dir }}
+    name: mobile (${{ matrix.dir }})
+    steps:
+      - uses: actions/checkout@v4
+      - name: Flutter version
+        id: fv
+        run: |
+          # Pin to .fvmrc when present, else latest stable.
+          v=""
+          [ -f .fvmrc ] && v=$(jq -r '.flutter // empty' .fvmrc)
+          echo "version=$v" >> "$GITHUB_OUTPUT"
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ steps.fv.outputs.version }}
+          cache: true
+      - run: flutter pub get
+      - name: Generate code
+        run: |
+          if grep -q 'build_runner' pubspec.yaml; then
+            dart run build_runner build --delete-conflicting-outputs
+          fi
+      - run: dart format --output=none --set-exit-if-changed .
+      - run: flutter analyze
+      - name: custom_lint (riverpod_lint)
+        run: |
+          if grep -q 'custom_lint' pubspec.yaml; then dart run custom_lint; fi
+      - name: Layer boundaries (MVVM)
+        run: tool/check_layers.sh
+      - run: flutter test
+
+  terraform:
+    needs: discover
+    if: needs.discover.outputs.terraform != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        dir: ${{ fromJson(needs.discover.outputs.terraform) }}
+    defaults:
+      run:
+        working-directory: ${{ matrix.dir }}
+    name: terraform (${{ matrix.dir }})
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - uses: terraform-linters/setup-tflint@v4
+      - run: terraform fmt -check -no-color
+      # No backend and no credentials: validates code only. Plans/applies go through terraform-deploy.
+      - run: terraform init -backend=false -input=false -no-color
+      - run: terraform validate -no-color
+      - name: tflint
+        run: |
+          cfg=""; d=$PWD
+          while [ "$d" != "$GITHUB_WORKSPACE" ] && [ "$d" != "/" ]; do
+            [ -f "$d/.tflint.hcl" ] && { cfg="$d/.tflint.hcl"; break; }
+            d=$(dirname "$d")
+          done
+          [ -z "$cfg" ] && [ -f "$GITHUB_WORKSPACE/.tflint.hcl" ] && cfg="$GITHUB_WORKSPACE/.tflint.hcl"
+          if [ -z "$cfg" ]; then echo "no .tflint.hcl, skipping"; exit 0; fi
+          tflint --init --config="$cfg"
+          tflint --config="$cfg" --no-color
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

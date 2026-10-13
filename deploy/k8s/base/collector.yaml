@@ -1,0 +1,48 @@
+# Collects the areas visitors asked for ("이 지역 수집 요청하기"), at a quiet hour.
+# Runs the same image and Secret as the API. It works through the request queue (most requested
+# first) inside a time budget, never faster than one request every 2-3 seconds, stops at once if
+# Naver answers 403/429, and puts unfinished requests back in the queue for the next night.
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: aicafe-collector
+  labels:
+    app.kubernetes.io/name: aicafe-collector
+spec:
+  schedule: "30 3 * * *"
+  timeZone: Asia/Seoul
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 3600
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      activeDeadlineSeconds: 12000  # 3 h 20 min: well after the 150 min budget, well before morning
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: aicafe-collector
+        spec:
+          restartPolicy: Never
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            seccompProfile:
+              type: RuntimeDefault
+          containers:
+            - name: collector
+              image: aicafe-backend
+              command: ["python", "-m", "app.adapters.inbound.cli", "collect-requests"]
+              args: ["--budget-minutes", "150", "--max-requests", "10"]
+              envFrom:
+                - secretRef:
+                    name: aicafe-backend
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop: ["ALL"]
+              resources:
+                requests: {cpu: 100m, memory: 256Mi}
+                limits: {memory: 1Gi}

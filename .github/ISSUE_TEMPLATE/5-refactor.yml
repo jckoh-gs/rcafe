@@ -1,0 +1,79 @@
+name: Refactor
+description: 동작은 그대로 두고 코드 구조나 품질을 개선하는 작업
+title: "[Refactor] "
+type: Refactor
+projects: ["gswindpower/10"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        동작은 그대로 두고 구조나 품질을 개선하는 작업입니다. 동작이 바뀌면 Feature 또는 Bug로 작성해 주세요.
+        관련 Epic이 있으면 **Relationships → Parent issue**로 연결하고, Priority / Effort는 사이드바에서 설정합니다.
+
+  - type: input
+    id: target
+    attributes:
+      label: 대상
+      description: 리팩터링할 서비스, 디렉터리, 모듈
+      placeholder: "예: services/order-backend/app/domain, infra/modules/static-site"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reason
+    attributes:
+      label: 유형
+      multiple: true
+      options:
+        - 아키텍처 규칙 위반 해소 (헥사고날 / FSD / Terraform 구조)
+        - 중복 제거 / 단순화
+        - 가독성 / 네이밍
+        - 성능 개선
+        - 테스트 용이성
+        - 의존성 / 라이브러리 정리
+        - 기타
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 현재 문제
+      description: 지금 구조의 어떤 점이 문제인가요? 코드 위치나 린터 경고가 있으면 함께 적어주세요.
+      placeholder: |
+        app/domain/services.py가 sqlalchemy를 직접 import하고 있어 import-linter
+        "Domain stays framework-free" 계약을 위반합니다.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 개선 방향
+      description: 어떻게 바꿀 계획인가요?
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: behavior
+    attributes:
+      label: 동작 보존
+      options:
+        - label: 외부에서 보이는 동작(API, UI, 인프라 리소스)은 바뀌지 않습니다. 바뀌어야 한다면 Feature 또는 Bug 이슈로 작성합니다.
+          required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: 검증 방법
+      description: 동작이 그대로임을 어떻게 확인하나요?
+      value: |
+        - [ ] 기존 테스트 통과
+        - [ ] quality gate 통과 (ruff / mypy / import-linter / eslint / steiger / terraform validate)
+        - [ ] Terraform: plan 결과 변경 없음 (리소스 이동은 moved 블록 사용)
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: 리스크 / 영향
+      description: 변경 범위가 넓은 파일, 함께 수정해야 하는 서비스, 머지 충돌 가능성 등

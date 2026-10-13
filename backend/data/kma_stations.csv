@@ -1,0 +1,12 @@
+# KMA ASOS stations around the capital area. Coordinates are APPROXIMATE (about +-1 km) and only
+# cover the area this service launches in. Replace with the official KMA station list (stn_inf)
+# when it becomes available; the code treats locations farther than MAX_STATION_KM as "no data".
+stn_id,name,lat,lng
+108,서울,37.5714,126.9658
+112,인천,37.4777,126.6249
+119,수원,37.2723,126.9853
+98,동두천,37.9019,127.0607
+99,파주,37.8859,126.7665
+201,강화,37.7074,126.4463
+202,양평,37.4886,127.4946
+203,이천,37.2639,127.4842

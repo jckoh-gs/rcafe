@@ -1,0 +1,77 @@
+# PostgreSQL 16 + pgvector for aicafe. Credentials come from the Secret `aicafe-db`, which is created
+# out of band (never committed):
+#   kubectl --context charles-k3s -n aicafe create secret generic aicafe-db \
+#     --from-literal=POSTGRES_USER=aicafe --from-literal=POSTGRES_PASSWORD='<generated>' \
+#     --from-literal=POSTGRES_DB=aicafe
+apiVersion: v1
+kind: Service
+metadata:
+  name: aicafe-db
+  labels:
+    app.kubernetes.io/name: aicafe-db
+spec:
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: aicafe-db
+  ports:
+    - name: postgres
+      port: 5432
+      targetPort: postgres
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: aicafe-db
+  labels:
+    app.kubernetes.io/name: aicafe-db
+spec:
+  serviceName: aicafe-db
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: aicafe-db
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: aicafe-db
+    spec:
+      containers:
+        - name: postgres
+          image: pgvector/pgvector:pg16
+          ports:
+            - name: postgres
+              containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: aicafe-db
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          readinessProbe:
+            exec:
+              command: ["sh", "-c", "pg_isready -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\""]
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            exec:
+              command: ["sh", "-c", "pg_isready -U \"$POSTGRES_USER\" -d \"$POSTGRES_DB\""]
+            initialDelaySeconds: 30
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
+            limits:
+              memory: 1Gi
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 10Gi

@@ -1,0 +1,23 @@
+# Quality gate config for a Flutter app (see .claude/rules/mobile-flutter-mvvm.md).
+# Layer boundaries are checked by tool/check_layers.sh, which needs always_use_package_imports.
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "build/**"
+  plugins:
+    - custom_lint # riverpod_lint
+
+linter:
+  rules:
+    always_use_package_imports: true
+    avoid_print: true
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    unawaited_futures: true

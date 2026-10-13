@@ -1,0 +1,14 @@
+# Local development database only (pgvector). Credentials are throwaway dev values.
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: aicafe
+      POSTGRES_PASSWORD: aicafe
+      POSTGRES_DB: aicafe
+    ports:
+      - "55432:5432"
+    volumes:
+      - aicafe-dev-pgdata:/var/lib/postgresql/data
+volumes:
+  aicafe-dev-pgdata:

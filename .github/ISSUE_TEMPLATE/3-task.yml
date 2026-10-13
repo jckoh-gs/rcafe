@@ -1,0 +1,53 @@
+name: Task
+description: 사용자에게 직접 보이지 않는 구체적인 작업 (설정, 인프라, 문서, 의존성 업데이트 등)
+title: "[Task] "
+type: Task
+projects: ["gswindpower/10"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        속한 Epic / Feature가 있으면 생성 후 **Relationships → Parent issue**로 연결해 주세요.
+        Priority / Effort, Project 필드(Status, Size, Iteration, 일정, Sub-project)는 사이드바에서 설정합니다.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 작업 내용
+      description: 무엇을, 왜 하는지 적어주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: done-criteria
+    attributes:
+      label: 완료 조건
+      placeholder: |
+        - [ ] infra/envs/stage/order-backend composition 추가
+        - [ ] terraform-deploy로 stage에 apply
+        - [ ] README 업데이트
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: 영향 범위
+      options:
+        - label: Backend
+        - label: Frontend
+        - label: Infra (Terraform)
+        - label: CI / 개발 도구
+        - label: 문서
+
+  - type: input
+    id: components
+    attributes:
+      label: 대상 서비스 / 디렉터리
+      placeholder: "예: services/order-backend, infra/envs/prod/network"
+
+  - type: textarea
+    id: references
+    attributes:
+      label: 참고 자료
+      description: 관련 문서, 링크, 이전 논의

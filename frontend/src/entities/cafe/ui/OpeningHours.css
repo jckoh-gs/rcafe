@@ -1,0 +1,67 @@
+.opening-hours {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+}
+
+.opening-hours summary {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.opening-hours summary::-webkit-details-marker {
+  display: none;
+}
+
+.opening-hours__today {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.opening-hours__more {
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.opening-hours__more::after {
+  content: ' ▾';
+}
+
+.opening-hours[open] .opening-hours__more::after {
+  content: ' ▴';
+}
+
+.opening-hours__list {
+  display: grid;
+  gap: 2px;
+  margin: 8px 0 4px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+
+.opening-hours__row {
+  display: grid;
+  grid-template-columns: 4.5em 1fr;
+  gap: 8px;
+}
+
+.opening-hours__row dt,
+.opening-hours__row dd {
+  margin: 0;
+}
+
+.opening-hours__row[data-today='true'] {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.opening-hours__note {
+  margin: 4px 0 0;
+  font-size: 0.78rem;
+  opacity: 0.85;
+}

@@ -1,0 +1,1073 @@
+{
+  "ROOT_QUERY": {
+    "__typename": "Query",
+    "placeDetail({\"input\":{\"deviceType\":\"pcmap\",\"id\":\"1000000001\",\"isNx\":false}})": {
+      "base": {
+        "__ref": "PlaceDetailBase:1000000001"
+      },
+      "newBusinessHours": [
+        {
+          "__typename": "NewBusinessHour",
+          "name": "",
+          "businessStatusDescription": {
+            "__typename": "BusinessStatusDescription",
+            "status": "영업 중",
+            "blindDescription": "1시 0분에 영업 종료",
+            "description": "01:00에 영업 종료",
+            "showEndsNextDay": true
+          },
+          "businessHours": [
+            {
+              "__typename": "WorkingHoursInfo",
+              "day": "금(10/9)",
+              "businessHours": {
+                "__typename": "StartEndTime",
+                "start": "11:00",
+                "end": "01:00"
+              },
+              "breakHours": [],
+              "description": "한글날",
+              "lastOrderTimes": null,
+              "showEndsNextDay": true
+            },
+            {
+              "__typename": "WorkingHoursInfo",
+              "day": "토",
+              "businessHours": {
+                "__typename": "StartEndTime",
+                "start": "11:00",
+                "end": "01:00"
+              },
+              "breakHours": [],
+              "description": null,
+              "lastOrderTimes": null,
+              "showEndsNextDay": true
+            },
+            {
+              "__typename": "WorkingHoursInfo",
+              "day": "일",
+              "businessHours": {
+                "__typename": "StartEndTime",
+                "start": "11:00",
+                "end": "01:00"
+              },
+              "breakHours": [],
+              "description": null,
+              "lastOrderTimes": null,
+              "showEndsNextDay": true
+            },
+            {
+              "__typename": "WorkingHoursInfo",
+              "day": "월",
+              "businessHours": {
+                "__typename": "StartEndTime",
+                "start": "11:00",
+                "end": "01:00"
+              },
+              "breakHours": [],
+              "description": null,
+              "lastOrderTimes": null,
+              "showEndsNextDay": true
+            },
+            {
+              "__typename": "WorkingHoursInfo",
+              "day": "화",
+              "businessHours": {
+                "__typename": "StartEndTime",
+                "start": "11:00",
+                "end": "01:00"
+              },
+              "breakHours": [],
+              "description": null,
+              "lastOrderTimes": null,
+              "showEndsNextDay": true
+            },
+            {
+              "__typename": "WorkingHoursInfo",
+              "day": "수",
+              "businessHours": {
+                "__typename": "StartEndTime",
+                "start": "11:00",
+                "end": "01:00"
+              },
+              "breakHours": [],
+              "description": null,
+              "lastOrderTimes": null,
+              "showEndsNextDay": true
+            },
+            {
+              "__typename": "WorkingHoursInfo",
+              "day": "목",
+              "businessHours": {
+                "__typename": "StartEndTime",
+                "start": "11:00",
+                "end": "01:00"
+              },
+              "breakHours": [],
+              "description": null,
+              "lastOrderTimes": null,
+              "showEndsNextDay": true
+            }
+          ],
+          "comingIrregularClosedDays": [],
+          "comingRegularClosedDays": "",
+          "freeText": ""
+        }
+      ],
+      "placeMenus": {
+        "__typename": "PlaceMenus",
+        "items": [
+          {
+            "__ref": "PlaceMenuItem:SampleMenu0000xxxxxx"
+          },
+          {
+            "__ref": "PlaceMenuItem:SampleMenu0001xxxxxx"
+          },
+          {
+            "__ref": "PlaceMenuItem:SampleMenu0002xxxxxx"
+          },
+          {
+            "__ref": "PlaceMenuItem:SampleMenu0003xxxxxx"
+          }
+        ]
+      },
+      "menuImages": [
+        {
+          "__typename": "MenuImage",
+          "imageUrl": "https://img.test/sample/imageUrl-1.jpg"
+        }
+      ],
+      "visitorReviewStats": {
+        "__ref": "VisitorReviewStatsResult:1000000001"
+      },
+      "topPhotos": {
+        "__typename": "PlaceDetailTopPhotos",
+        "total": 3,
+        "items": [
+          {
+            "__ref": "PlaceDetailTopPhotoItem:1000000001_business_1"
+          },
+          {
+            "__ref": "PlaceDetailTopPhotoItem:1000000001_video_1"
+          },
+          {
+            "__ref": "PlaceDetailTopPhotoItem:1000000001_business_2"
+          },
+          {
+            "__ref": "PlaceDetailTopPhotoItem:1000000001_visitor_1"
+          }
+        ]
+      }
+    }
+  },
+  "PlaceDetailBase:1000000001": {
+    "__typename": "PlaceDetailBase",
+    "id": "1000000001",
+    "name": "샘플커피랩 역삼점",
+    "reviewSettings": {
+      "__typename": "ReviewSettings",
+      "keyword": null,
+      "blog": 1,
+      "cafe": 1,
+      "showVisitorReviewScore": true
+    },
+    "siteId": "sp_sample000001",
+    "road": "(trimmed)",
+    "conveniences": [
+      "무선 인터넷",
+      "남/녀 화장실 구분",
+      "포장",
+      "단체 이용 가능",
+      "간편결제"
+    ],
+    "category": "카페,디저트",
+    "categoryCode": "220563",
+    "categoryCodeList": [
+      "220036",
+      "220052",
+      "220563",
+      "1004760",
+      "1004985"
+    ],
+    "defaultCategoryCodeList": [
+      "220036",
+      "220052",
+      "220563"
+    ],
+    "categoryCount": 2,
+    "rcode": "09680101",
+    "roadAddress": "서울 강남구 샘플로1길 1 1층",
+    "address": "서울 강남구 역삼동 100-1",
+    "streetPanorama": {
+      "__ref": "Panorama:Tg2tkEEvTZnHh9G7YjxB2g=="
+    },
+    "isKtis": null,
+    "visitorReviewsTotal": 3281,
+    "visitorReviewsScore": 4.92,
+    "cafeBlogReviewsTotal": 2114,
+    "missingInfo": {
+      "__typename": "MissingInfo",
+      "businessType": "restaurant",
+      "isBizHourMissing": true,
+      "isMenuImageMissing": false,
+      "isAccessorMissing": false,
+      "isDescriptionMissing": false,
+      "isConveniencesMissing": false,
+      "needLargeSuggestionBanner": true,
+      "isBoss": false
+    },
+    "hideBusinessHours": false,
+    "hidePrice": false,
+    "microReviews": [
+      "달콤한 시간을 함께하는 샘플 카페"
+    ],
+    "paymentInfo": [
+      "제로페이",
+      "간편결제"
+    ],
+    "openingHours": null,
+    "isGoodStore": false,
+    "coordinate": {
+      "__typename": "Coordinate",
+      "x": "127.0280000",
+      "y": "37.5030000",
+      "mapZoomLevel": 12
+    },
+    "poiInfo": {
+      "__typename": "PoiInfo",
+      "polyline": null,
+      "land": null,
+      "polygon": null,
+      "relation": null,
+      "parentRelation": null
+    },
+    "routeUrl": null,
+    "virtualPhone": "0507-0000-0001",
+    "phone": null,
+    "hasMobilePhoneNumber": false,
+    "talktalkUrl": null,
+    "chatBotUrl": null,
+    "naverBlog": null,
+    "visitorReviewsTextReviewTotal": 3032,
+    "beLocalWeek": null,
+    "indoorInfo": null
+  },
+  "VisitorReviewStatsResult:1000000001": {
+    "__typename": "VisitorReviewStatsResult",
+    "id": "1000000001",
+    "name": null,
+    "review": {
+      "__typename": "VisitorReviewStats",
+      "avgRating": 4.92,
+      "totalCount": 3281,
+      "scores": [
+        {
+          "__typename": "VisitorReviewScore",
+          "count": 2,
+          "score": null
+        },
+        {
+          "__typename": "VisitorReviewScore",
+          "count": 1,
+          "score": null
+        },
+        {
+          "__typename": "VisitorReviewScore",
+          "count": 1,
+          "score": null
+        },
+        {
+          "__typename": "VisitorReviewScore",
+          "count": 2,
+          "score": null
+        },
+        {
+          "__typename": "VisitorReviewScore",
+          "count": 16,
+          "score": null
+        },
+        {
+          "__typename": "VisitorReviewScore",
+          "count": 84,
+          "score": null
+        },
+        {
+          "__typename": "VisitorReviewScore",
+          "count": 824,
+          "score": null
+        }
+      ],
+      "imageReviewCount": 2804,
+      "authorCount": 894
+    },
+    "analysis": {
+      "__typename": "VisitorReviewStatsAnalysis",
+      "themes": [
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "total",
+          "label": "만족도",
+          "count": 2230
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "taste",
+          "label": "맛",
+          "count": 2219
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "service",
+          "label": "서비스",
+          "count": 1604
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "mood",
+          "label": "분위기",
+          "count": 962
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "menu",
+          "label": "메뉴",
+          "count": 176
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "purpose",
+          "label": "목적",
+          "count": 150
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "location",
+          "label": "위치",
+          "count": 84
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "cleanliness",
+          "label": "청결도",
+          "count": 49
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "price",
+          "label": "가격",
+          "count": 32
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "amount",
+          "label": "음식량",
+          "count": 17
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "view",
+          "label": "전망",
+          "count": 17
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "covid19",
+          "label": "방역",
+          "count": 11
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "waitingtime",
+          "label": "대기시간",
+          "count": 11
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "parking",
+          "label": "주차",
+          "count": 2
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "code": "naver",
+          "label": "예약",
+          "count": 1
+        }
+      ],
+      "menus": [
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "label": "커피",
+          "count": 739
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "label": "케이크",
+          "count": 308
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "label": "마들렌",
+          "count": 218
+        },
+        {
+          "__typename": "VisitorReviewStatsAnalysisThemes",
+          "label": "크로플",
+          "count": 145
+        }
+      ],
+      "votedKeyword": {
+        "__typename": "VisitorReviewStatsAnalysisVoteKeyword",
+        "totalCount": 13762,
+        "reviewCount": 3258,
+        "userCount": 3061,
+        "details": [
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "dessert_good",
+            "iconUrl": "https://img.test/emoji/cake.png",
+            "iconCode": "cake",
+            "displayName": "디저트가 맛있어요",
+            "count": 2724,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "interior_cool",
+            "iconUrl": "https://img.test/emoji/couch_and_lamp.png",
+            "iconCode": "couch_and_lamp",
+            "displayName": "인테리어가 멋져요",
+            "count": 2010,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "coffee_good",
+            "iconUrl": "https://img.test/emoji/coffee.png",
+            "iconCode": "coffee",
+            "displayName": "커피가 맛있어요",
+            "count": 1966,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "drink_good",
+            "iconUrl": "https://img.test/emoji/juice.png",
+            "iconCode": "juice",
+            "displayName": "음료가 맛있어요",
+            "count": 1400,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "photo_good",
+            "iconUrl": "https://img.test/emoji/camera_with_flash.png",
+            "iconCode": "camera_with_flash",
+            "displayName": "사진이 잘 나와요",
+            "count": 1299,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "kind",
+            "iconUrl": "https://img.test/emoji/beating_heart.png",
+            "iconCode": "beating_heart",
+            "displayName": "친절해요",
+            "count": 1254,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "special_menu",
+            "iconUrl": "https://img.test/emoji/cook.png",
+            "iconCode": "cook",
+            "displayName": "특별한 메뉴가 있어요",
+            "count": 627,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "talk_good",
+            "iconUrl": "https://img.test/emoji/speaking_head.png",
+            "iconCode": "speaking_head",
+            "displayName": "대화하기 좋아요",
+            "count": 561,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "store_clean",
+            "iconUrl": "https://img.test/emoji/sparkles.png",
+            "iconCode": "sparkles",
+            "displayName": "매장이 청결해요",
+            "count": 466,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "spacious",
+            "iconUrl": "https://img.test/emoji/eyes.png",
+            "iconCode": "eyes",
+            "displayName": "매장이 넓어요",
+            "count": 351,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "view_good",
+            "iconUrl": "https://img.test/emoji/framed_picture.png",
+            "iconCode": "framed_picture",
+            "displayName": "뷰가 좋아요",
+            "count": 151,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "bread_good",
+            "iconUrl": "https://img.test/emoji/bread.png",
+            "iconCode": "bread",
+            "displayName": "빵이 맛있어요",
+            "count": 120,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "price_cheap",
+            "iconUrl": "https://img.test/emoji/coin.png",
+            "iconCode": "coin",
+            "displayName": "가성비가 좋아요",
+            "count": 98,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "comfy",
+            "iconUrl": "https://img.test/emoji/couch.png",
+            "iconCode": "couch",
+            "displayName": "좌석이 편해요",
+            "count": 82,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "types_various",
+            "iconUrl": "https://img.test/emoji/green_heart.png",
+            "iconCode": "green_heart",
+            "displayName": "종류가 다양해요",
+            "count": 77,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "toilet_clean",
+            "iconUrl": "https://img.test/emoji/restroom.png",
+            "iconCode": "restroom",
+            "displayName": "화장실이 깨끗해요",
+            "count": 75,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "concept_unique",
+            "iconUrl": "https://img.test/emoji/light_bulb.png",
+            "iconCode": "light_bulb",
+            "displayName": "컨셉이 독특해요",
+            "count": 69,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "outdoor_good",
+            "iconUrl": "https://img.test/emoji/sun.png",
+            "iconCode": "sun",
+            "displayName": "야외공간이 멋져요",
+            "count": 54,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "food_good",
+            "iconUrl": "https://img.test/emoji/face_savoring_food.png",
+            "iconCode": "face_savoring_food",
+            "displayName": "음식이 맛있어요",
+            "count": 51,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "study_good",
+            "iconUrl": "https://img.test/emoji/laptop.png",
+            "iconCode": "laptop",
+            "displayName": "집중하기 좋아요",
+            "count": 45,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "together",
+            "iconUrl": "https://img.test/emoji/busts_in_silhouette.png",
+            "iconCode": "busts_in_silhouette",
+            "displayName": "단체모임 하기 좋아요",
+            "count": 44,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "menu_good",
+            "iconUrl": "https://img.test/emoji/green_heart.png",
+            "iconCode": "green_heart",
+            "displayName": "메뉴 구성이 알차요",
+            "count": 42,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "music_good",
+            "iconUrl": "https://img.test/emoji/musical_note.png",
+            "iconCode": "musical_note",
+            "displayName": "음악이 좋아요",
+            "count": 39,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "cozy",
+            "iconUrl": "https://img.test/emoji/face_smiling.png",
+            "iconCode": "face_smiling",
+            "displayName": "아늑해요",
+            "count": 33,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "price_worthy",
+            "iconUrl": "https://img.test/emoji/gem_stone.png",
+            "iconCode": "gem_stone",
+            "displayName": "비싼 만큼 가치있어요",
+            "count": 29,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "stay_long",
+            "iconUrl": "https://img.test/emoji/face_relieved.png",
+            "iconCode": "face_relieved",
+            "displayName": "오래 머무르기 좋아요",
+            "count": 21,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "special_day",
+            "iconUrl": "https://img.test/emoji/bouquet.png",
+            "iconCode": "bouquet",
+            "displayName": "특별한 날 가기 좋아요",
+            "count": 14,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "fresh",
+            "iconUrl": "https://img.test/emoji/leaf.png",
+            "iconCode": "leaf",
+            "displayName": "재료가 신선해요",
+            "count": 11,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "food_fast",
+            "iconUrl": "https://img.test/emoji/stopwatch.png",
+            "iconCode": "stopwatch",
+            "displayName": "음식이 빨리 나와요",
+            "count": 10,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "atmosphere_calm",
+            "iconUrl": "https://img.test/emoji/face_relieved.png",
+            "iconCode": "face_relieved",
+            "displayName": "차분한 분위기예요",
+            "count": 8,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "large",
+            "iconUrl": "https://img.test/emoji/steamed_rice.png",
+            "iconCode": "steamed_rice",
+            "displayName": "양이 많아요",
+            "count": 7,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "taste_healthy",
+            "iconUrl": "https://img.test/emoji/leaf.png",
+            "iconCode": "leaf",
+            "displayName": "건강한 맛이에요",
+            "count": 6,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "tea_good",
+            "iconUrl": "https://img.test/emoji/tea.png",
+            "iconCode": "tea",
+            "displayName": "차가 맛있어요",
+            "count": 6,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "custom_good",
+            "iconUrl": "https://img.test/emoji/clipboard.png",
+            "iconCode": "clipboard",
+            "displayName": "주문제작을 잘해줘요",
+            "count": 2,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "gift_good",
+            "iconUrl": "https://img.test/emoji/wrapped_gift.png",
+            "iconCode": "wrapped_gift",
+            "displayName": "선물하기 좋아요",
+            "count": 2,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "parking_easy",
+            "iconUrl": "https://img.test/emoji/park_sign.png",
+            "iconCode": "park_sign",
+            "displayName": "주차하기 편해요",
+            "count": 2,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "party_good",
+            "iconUrl": "https://img.test/emoji/party_popper.png",
+            "iconCode": "party_popper",
+            "displayName": "파티하기 좋아요",
+            "count": 2,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "room_nice",
+            "iconUrl": "https://img.test/emoji/room.png",
+            "iconCode": "room",
+            "displayName": "룸이 잘 되어있어요",
+            "count": 2,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "alcohol_var",
+            "iconUrl": "https://img.test/emoji/cocktail.png",
+            "iconCode": "cocktail",
+            "displayName": "술이 다양해요",
+            "count": 1,
+            "previousRank": null
+          },
+          {
+            "__typename": "VisitorReviewStatsAnalysisVoteKeywordDetail",
+            "category": null,
+            "code": "drink_alone",
+            "iconUrl": "https://img.test/emoji/whisky.png",
+            "iconCode": "whisky",
+            "displayName": "혼술하기 좋아요",
+            "count": 1,
+            "previousRank": null
+          }
+        ]
+      }
+    },
+    "visitorReviewsTotal": 3281,
+    "ratingReviewsTotal": 197
+  },
+  "PlaceMenuItem:SampleMenu0000xxxxxx": {
+    "__typename": "PlaceMenuItem",
+    "id": "SampleMenu0000xxxxxx",
+    "type": "normal",
+    "name": "에스프레소",
+    "description": null,
+    "badges": [],
+    "labels": [],
+    "thumbnailUrl": null,
+    "hasImage": false,
+    "isSetMenu": false,
+    "price": {
+      "__typename": "PlaceMenuPrice",
+      "priceType": "fixed",
+      "displayText": "6,500원"
+    },
+    "images": [],
+    "optionGroups": [],
+    "course": null
+  },
+  "PlaceMenuItem:SampleMenu0001xxxxxx": {
+    "__typename": "PlaceMenuItem",
+    "id": "SampleMenu0001xxxxxx",
+    "type": "normal",
+    "name": "카푸치노",
+    "description": null,
+    "badges": [],
+    "labels": [],
+    "thumbnailUrl": null,
+    "hasImage": false,
+    "isSetMenu": false,
+    "price": {
+      "__typename": "PlaceMenuPrice",
+      "priceType": "fixed",
+      "displayText": "7,500원"
+    },
+    "images": [],
+    "optionGroups": [],
+    "course": null
+  },
+  "PlaceMenuItem:SampleMenu0002xxxxxx": {
+    "__typename": "PlaceMenuItem",
+    "id": "SampleMenu0002xxxxxx",
+    "type": "normal",
+    "name": "레몬요거트샤베트",
+    "description": null,
+    "badges": [],
+    "labels": [],
+    "thumbnailUrl": null,
+    "hasImage": false,
+    "isSetMenu": false,
+    "price": {
+      "__typename": "PlaceMenuPrice",
+      "priceType": "fixed",
+      "displayText": "6,800원"
+    },
+    "images": [],
+    "optionGroups": [],
+    "course": null
+  },
+  "PlaceMenuItem:SampleMenu0003xxxxxx": {
+    "__typename": "PlaceMenuItem",
+    "id": "SampleMenu0003xxxxxx",
+    "type": "normal",
+    "name": "자몽요거트샤베트",
+    "description": null,
+    "badges": [],
+    "labels": [],
+    "thumbnailUrl": null,
+    "hasImage": false,
+    "isSetMenu": false,
+    "price": {
+      "__typename": "PlaceMenuPrice",
+      "priceType": "fixed",
+      "displayText": "6,800원"
+    },
+    "images": [],
+    "optionGroups": [],
+    "course": null
+  },
+  "PlaceDetailTopPhotoItem:1000000001_business_1": {
+    "__typename": "PlaceDetailTopPhotoItem",
+    "id": "1000000001_business_1",
+    "viewId": "1000000001_business_1_1",
+    "title": "샘플커피랩 역삼점",
+    "width": 1254,
+    "height": 1254,
+    "linkUrl": null,
+    "date": null,
+    "isPopularStyle": null,
+    "price": null,
+    "video": null,
+    "author": {
+      "__typename": "PhotoViewerItemAuthor",
+      "id": null,
+      "nickname": null,
+      "imageUrl": null,
+      "objectId": null,
+      "url": null,
+      "officialYn": null,
+      "followRequested": null
+    },
+    "originalUrl": "https://img.test/sample/originalUrl-2.jpg",
+    "thumbnailUrl": "https://img.test/sample/thumbnailUrl-3.jpg",
+    "description": null,
+    "mediaFormat": "image",
+    "mediaSource": "business",
+    "filterId": "biz",
+    "subFilterId": null,
+    "sourceTitle": null,
+    "externalLink": null,
+    "clip": null,
+    "option": null,
+    "visitorReview": null,
+    "originType": null
+  },
+  "PlaceDetailTopPhotoItem:1000000001_video_1": {
+    "__typename": "PlaceDetailTopPhotoItem",
+    "id": "1000000001_video_1",
+    "viewId": "1000000001_video_1_2",
+    "title": null,
+    "width": null,
+    "height": null,
+    "linkUrl": null,
+    "date": "2026.06.16",
+    "isPopularStyle": null,
+    "price": null,
+    "video": {
+      "__typename": "VideoItemInfo",
+      "videoId": "54FABAB4D9ED871EACA8D62A63C301B8C3DC",
+      "videoUrl": "vod3://sample/video",
+      "trailerUrl": "https://img.test/sample/trailerUrl-4.jpg"
+    },
+    "author": {
+      "__typename": "PhotoViewerItemAuthor",
+      "id": null,
+      "nickname": "샘플커피랩 역삼점",
+      "imageUrl": null,
+      "objectId": null,
+      "url": null,
+      "officialYn": null,
+      "followRequested": null
+    },
+    "originalUrl": "https://img.test/sample/originalUrl-5.jpg",
+    "thumbnailUrl": "https://img.test/sample/thumbnailUrl-6.jpg",
+    "description": null,
+    "mediaFormat": "video",
+    "mediaSource": "cp0",
+    "filterId": null,
+    "subFilterId": null,
+    "sourceTitle": "소식",
+    "externalLink": null,
+    "clip": null,
+    "option": null,
+    "visitorReview": null,
+    "originType": "cp0"
+  },
+  "PlaceDetailTopPhotoItem:1000000001_business_2": {
+    "__typename": "PlaceDetailTopPhotoItem",
+    "id": "1000000001_business_2",
+    "viewId": "1000000001_business_2_3",
+    "title": "샘플커피랩 역삼점",
+    "width": 1065,
+    "height": 1477,
+    "linkUrl": null,
+    "date": null,
+    "isPopularStyle": null,
+    "price": null,
+    "video": null,
+    "author": {
+      "__typename": "PhotoViewerItemAuthor",
+      "id": null,
+      "nickname": null,
+      "imageUrl": null,
+      "objectId": null,
+      "url": null,
+      "officialYn": null,
+      "followRequested": null
+    },
+    "originalUrl": "https://img.test/sample/originalUrl-7.jpg",
+    "thumbnailUrl": "https://img.test/sample/thumbnailUrl-8.jpg",
+    "description": null,
+    "mediaFormat": "image",
+    "mediaSource": "business",
+    "filterId": "biz",
+    "subFilterId": null,
+    "sourceTitle": null,
+    "externalLink": null,
+    "clip": null,
+    "option": null,
+    "visitorReview": null,
+    "originType": null
+  },
+  "PlaceDetailTopPhotoItem:1000000001_visitor_1": {
+    "__typename": "PlaceDetailTopPhotoItem",
+    "id": "1000000001_visitor_1",
+    "viewId": "1000000001_visitor_1_4",
+    "title": "내부",
+    "width": 900,
+    "height": 1200,
+    "linkUrl": "https://blog.example.com/sample/1",
+    "date": "2026.10.05",
+    "isPopularStyle": null,
+    "price": null,
+    "video": null,
+    "author": {
+      "__typename": "PhotoViewerItemAuthor",
+      "id": null,
+      "nickname": "샘플방문자",
+      "imageUrl": "https://img.test/sample/imageUrl-9.jpg",
+      "objectId": null,
+      "url": "https://blog.example.com/sample",
+      "officialYn": null,
+      "followRequested": null
+    },
+    "originalUrl": "https://img.test/sample/originalUrl-10.jpg",
+    "thumbnailUrl": "https://img.test/sample/thumbnailUrl-11.jpg",
+    "description": "포토존이 예쁜 아기자기한 샘플 디저트카페 - 샘플커피랩 역삼점",
+    "mediaFormat": "image",
+    "mediaSource": "aiView",
+    "filterId": "aiView",
+    "subFilterId": "INTERIOR",
+    "sourceTitle": "블로그",
+    "externalLink": {
+      "__typename": "PhotoViewerExternalLink",
+      "title": "블로그",
+      "url": "https://blog.example.com/sample"
+    },
+    "clip": null,
+    "option": null,
+    "visitorReview": {
+      "__typename": "PhotoViewerVisitorReviewInfo",
+      "visitCount": null,
+      "visitCategories": null,
+      "votedKeywords": null,
+      "isFollowing": null,
+      "rating": null,
+      "reviewGroupId": null,
+      "reviewId": null
+    },
+    "originType": "aiView"
+  }
+}

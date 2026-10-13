@@ -1,0 +1,83 @@
+name: Feature
+description: 사용자에게 가치를 주는 새 기능 또는 기능 변경
+title: "[Feature] "
+type: Feature
+projects: ["gswindpower/10"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        속한 Epic이 있으면 생성 후 **Relationships → Parent issue**로 연결해 주세요.
+        Priority / Effort, Project 필드(Status, Size, Iteration, 일정, Sub-project)는 사이드바에서 설정합니다.
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: 사용자 스토리
+      value: |
+        **누가**:
+        **무엇을 하고 싶다**:
+        **왜냐하면**:
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: 요구사항
+      description: 기능이 해야 하는 일을 구체적으로 적어주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: 수용 기준
+      description: 완료를 판단하는 기준입니다. 리뷰와 QA 때 이 목록으로 확인합니다.
+      placeholder: |
+        - [ ] Given 로그인한 사용자가, When 장바구니에서 결제를 누르면, Then 결제 페이지로 이동한다
+        - [ ] 결제 실패 시 오류 메시지를 보여준다
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: 영향 범위
+      options:
+        - label: Backend
+        - label: Frontend
+        - label: Infra (Terraform)
+        - label: CI / 개발 도구
+
+  - type: input
+    id: components
+    attributes:
+      label: 대상 서비스 / 디렉터리
+      placeholder: "예: services/order-backend, apps/web-frontend"
+
+  - type: textarea
+    id: design
+    attributes:
+      label: 설계 / API / 디자인
+      description: API 명세, 도메인 모델 변경, 화면 디자인 링크 등
+      placeholder: |
+        - API: POST /orders/{id}/payments
+        - Figma:
+
+  - type: textarea
+    id: considerations
+    attributes:
+      label: 비기능 요구사항
+      description: 해당되는 것만 적어주세요.
+      value: |
+        - 보안 / 권한:
+        - 성능:
+        - 마이그레이션 / 하위 호환:
+        - 모니터링 / 알림:
+
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: 범위 밖
+      description: 이번에 하지 않는 것. 후속 이슈로 남길 항목

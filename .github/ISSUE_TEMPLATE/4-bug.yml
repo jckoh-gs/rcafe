@@ -1,0 +1,116 @@
+name: Bug
+description: 의도와 다르게 동작하는 문제 신고
+title: "[Bug] "
+type: Bug
+projects: ["gswindpower/10"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        처리 순서(Priority)와 일정은 트리아지 때 사이드바 필드로 정합니다. 본문에는 문제와 영향만 적어주세요.
+        관련된 Epic / Feature가 있으면 **Relationships → Parent issue**로 연결합니다.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: 확인 사항
+      options:
+        - label: 같은 문제로 열려 있는 이슈가 없는지 검색했습니다.
+          required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: 요약
+      description: 어떤 문제인지 한두 문장으로 적어주세요.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: 발생 환경
+      multiple: true
+      options:
+        - local
+        - dev
+        - stage
+        - prod
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 심각도 (영향도)
+      description: |
+        문제의 영향 크기입니다. 처리 순서는 Priority 필드로 따로 정합니다.
+        Critical: 서비스 중단, 데이터 손실, 보안 문제 · High: 핵심 기능 사용 불가, 우회 방법 없음
+        Medium: 기능 일부 오동작, 우회 방법 있음 · Low: 사소한 UI/문구 문제
+      options:
+        - Critical
+        - High
+        - Medium
+        - Low
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: 영향 범위
+      options:
+        - label: Backend
+        - label: Frontend
+        - label: Infra (Terraform)
+        - label: CI / 개발 도구
+
+  - type: input
+    id: components
+    attributes:
+      label: 대상 서비스 / 디렉터리
+      placeholder: "예: services/order-backend, apps/web-frontend"
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 단계
+      placeholder: |
+        1. /orders 페이지로 이동
+        2. 결제 버튼 클릭
+        3. ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대 동작
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 실제 동작
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 로그 / 에러 메시지
+      description: 토큰, 비밀번호, 개인정보는 반드시 지우고 붙여넣어 주세요.
+      render: shell
+
+  - type: input
+    id: version
+    attributes:
+      label: 버전 / 커밋 / 배포 시각
+      placeholder: "예: v1.4.2, a1b2c3d, 2026-10-01 14:00 KST"
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 스크린샷 / 추가 정보
+      description: 이미지를 끌어다 놓을 수 있습니다.

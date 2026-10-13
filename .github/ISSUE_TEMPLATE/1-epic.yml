@@ -1,0 +1,78 @@
+name: Epic
+description: 여러 Feature/Task로 나뉘는 큰 목표 단위의 작업
+title: "[Epic] "
+type: Epic
+projects: ["gswindpower/10"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Epic은 하나의 비즈니스 목표를 위한 작업 묶음입니다. 구현은 Feature / Task로 나눠
+        이 이슈의 **sub-issue**로 연결합니다 (Relationships → Add sub-issue).
+        일정·우선순위는 본문이 아니라 Project 필드(Start / Target date, Priority, Sub-project)에 입력해 주세요.
+
+  - type: textarea
+    id: background
+    attributes:
+      label: 배경
+      description: 왜 이 작업이 필요한가요? 해결하려는 문제나 기회를 적어주세요.
+    validations:
+      required: true
+
+  - type: textarea
+    id: goals
+    attributes:
+      label: 목표
+      description: 이 Epic이 끝났을 때 달라지는 것은 무엇인가요?
+    validations:
+      required: true
+
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: 완료 조건 / 성공 지표
+      description: Epic을 닫을 수 있는 기준. 가능하면 측정 가능한 지표로 적어주세요.
+      placeholder: |
+        - [ ] 주문 API p95 응답 시간 300ms 이하
+        - [ ] 신규 결제 플로우 prod 배포
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 범위
+      value: |
+        **포함**
+        -
+
+        **제외**
+        -
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: areas
+    attributes:
+      label: 영향 범위
+      options:
+        - label: Backend
+        - label: Frontend
+        - label: Infra (Terraform)
+        - label: CI / 개발 도구
+
+  - type: textarea
+    id: breakdown
+    attributes:
+      label: 하위 작업 계획
+      description: 예상되는 Feature / Task 목록. 각각 이슈로 만든 뒤 이 Epic의 sub-issue로 연결합니다.
+      placeholder: |
+        - [ ] Feature: 결제 수단 등록
+        - [ ] Feature: 결제 내역 조회
+        - [ ] Task: 결제 서비스 Terraform composition 추가
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: 리스크 / 의존성
+      description: 외부 팀, 서드파티, 인프라 변경 등 일정이나 결과에 영향을 줄 수 있는 요소

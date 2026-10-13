@@ -1,0 +1,21 @@
+# Traefik IngressRoute on the plain-HTTP `web` entrypoint (no TLS by decision; browsers therefore
+# block geolocation on this origin and the UI falls back to the map picker).
+#
+# A Traefik IngressRoute is used (instead of a networking.k8s.io/v1 Ingress) because it is Traefik-native
+# and was the way out while a leftover ingress-nginx validating webhook rejected every new Ingress.
+# That webhook has since been removed, so a plain Ingress would work again as well.
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: aicafe
+  labels:
+    app.kubernetes.io/name: aicafe
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`rcafe.koh.it.kr`)
+      services:
+        - name: aicafe-frontend
+          port: http

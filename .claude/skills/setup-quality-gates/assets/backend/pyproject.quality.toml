@@ -1,0 +1,52 @@
+# Merge these sections into <backend>/pyproject.toml.
+# Replace "app" with the backend's top-level package name.
+
+[dependency-groups]
+dev = ["ruff", "mypy", "import-linter"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+  "E", "W", "F",   # pycodestyle, pyflakes
+  "I",             # isort
+  "B",             # bugbear
+  "UP",            # pyupgrade
+  "ASYNC",         # blocking calls inside async functions
+  "ANN",           # missing type annotations
+  "SIM", "RUF",
+]
+ignore = ["ANN401"]  # allow explicit Any where unavoidable
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["ANN"]
+
+[tool.mypy]
+files = ["app"]  # add "tests" once it exists
+strict = true
+plugins = ["pydantic.mypy"]
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[tool.importlinter]
+root_package = "app"
+include_external_packages = true
+
+# adapters -> application -> domain. Parentheses mark a layer that may not exist yet.
+[[tool.importlinter.contracts]]
+name = "Hexagonal layers point inward"
+type = "layers"
+layers = ["app.main", "app.adapters", "(app.application)", "app.domain"]
+
+# Add "app.application" to source_modules once that package exists
+# (import-linter rejects modules that do not exist).
+[[tool.importlinter.contracts]]
+name = "Domain stays framework-free"
+type = "forbidden"
+source_modules = ["app.domain"]
+forbidden_modules = ["fastapi", "starlette", "pydantic", "sqlalchemy", "asyncpg", "httpx", "requests"]

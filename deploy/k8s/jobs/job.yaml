@@ -1,0 +1,28 @@
+# One-off jobs, run manually with the same image and Secret as the API, e.g.
+#   kubectl --context charles-k3s -n aicafe create -f <(sed 's/__NAME__/seed/; s/__CMD__/seed-archetypes/' job.yaml)
+# `crawl` jobs are polite (about one request every 2-3 s) and stop on 403/429.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: aicafe-__NAME__-
+  labels:
+    app.kubernetes.io/part-of: aicafe
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 86400
+  template:
+    spec:
+      restartPolicy: Never
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+      containers:
+        - name: cli
+          image: aicafe-backend
+          command: ["python", "-m", "app.adapters.inbound.cli", "__CMD__"]
+          envFrom:
+            - secretRef:
+                name: aicafe-backend
+          resources:
+            requests: {cpu: 50m, memory: 128Mi}
+            limits: {memory: 512Mi}

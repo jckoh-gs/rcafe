@@ -1,0 +1,228 @@
+@import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
+
+/*
+ * Design tokens. The page mood follows the weather (data-theme) and the time of day (data-night).
+ * mild  = cream + citrus      hot  = mint + ice
+ * cold  = espresso + caramel  rain = slate + lamp light
+ */
+:root {
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+    'Malgun Gothic', system-ui, sans-serif;
+  --font-serif: 'Iowan Old Style', 'Noto Serif KR', 'Nanum Myeongjo', 'AppleMyungjo', Georgia, serif;
+
+  --radius: 16px;
+  --radius-lg: 24px;
+  --shadow-sm: 0 1px 2px rgb(60 40 20 / 0.08), 0 2px 8px rgb(60 40 20 / 0.06);
+  --shadow-md: 0 4px 18px rgb(60 40 20 / 0.12);
+  --shadow-lg: 0 14px 32px rgb(60 40 20 / 0.18);
+
+  /* default = mild / day */
+  --bg: #fbf4e6;
+  --surface: #fffdf8;
+  --surface-2: #f6ecd8;
+  --ink: #3b2a1e;
+  --ink-soft: #6f5b4b;
+  --line: #e6d7bd;
+  --accent: #d8791a;
+  --accent-ink: #a95a0b;
+  --accent-soft: #fde9c8;
+  --on-accent: #ffffff;
+  --chip-bg: #f4e6cb;
+  --chip-ink: #6a4a1f;
+  --open-bg: #dff3df;
+  --open-ink: #1c6a2e;
+  --closed-bg: #f3e1de;
+  --closed-ink: #8c3328;
+  --hero-bg: linear-gradient(150deg, #ffe7b0 0%, #fbd48a 55%, #f7c27a 100%);
+  --hero-ink: #3b2a1e;
+}
+
+:root[data-theme='hot'] {
+  --bg: #e9f8f3;
+  --surface: #ffffff;
+  --surface-2: #daf1ea;
+  --ink: #0f3b36;
+  --ink-soft: #3f6b66;
+  --line: #bfe3da;
+  --accent: #0f9d8c;
+  --accent-ink: #0a6f63;
+  --accent-soft: #c9efe6;
+  --chip-bg: #d3f0e8;
+  --chip-ink: #0d5a50;
+  --hero-bg: linear-gradient(150deg, #aeeadd 0%, #78d6e0 55%, #5fc1d6 100%);
+  --hero-ink: #07312d;
+  --shadow-sm: 0 1px 2px rgb(10 70 60 / 0.08), 0 2px 8px rgb(10 70 60 / 0.06);
+  --shadow-md: 0 4px 18px rgb(10 70 60 / 0.14);
+  --shadow-lg: 0 14px 32px rgb(10 70 60 / 0.2);
+}
+
+:root[data-theme='cold'] {
+  --bg: #f1e6d9;
+  --surface: #fffaf3;
+  --surface-2: #ecdcc8;
+  --ink: #2f1f16;
+  --ink-soft: #6a5242;
+  --line: #dcc6ac;
+  --accent: #8b4a22;
+  --accent-ink: #7a3f1a;
+  --accent-soft: #f0d5b8;
+  --chip-bg: #ead6bd;
+  --chip-ink: #5e3a1a;
+  --hero-bg: linear-gradient(150deg, #5a3a2a 0%, #3f271b 60%, #2c1a12 100%);
+  --hero-ink: #f8ead7;
+}
+
+:root[data-theme='rain'] {
+  --bg: #e6ecf2;
+  --surface: #fbfdff;
+  --surface-2: #dde6ef;
+  --ink: #1d2a38;
+  --ink-soft: #546577;
+  --line: #c6d3df;
+  --accent: #c27a14;
+  --accent-ink: #94590a;
+  --accent-soft: #fbe4b8;
+  --chip-bg: #d6e1ec;
+  --chip-ink: #2a4258;
+  --hero-bg: linear-gradient(160deg, #6f8399 0%, #4c6177 55%, #3b4e63 100%);
+  --hero-ink: #f1f6fb;
+  --shadow-sm: 0 1px 2px rgb(20 40 70 / 0.1), 0 2px 8px rgb(20 40 70 / 0.08);
+  --shadow-md: 0 4px 18px rgb(20 40 70 / 0.16);
+  --shadow-lg: 0 14px 32px rgb(20 40 70 / 0.24);
+}
+
+/* evening / night: the same moods, lamp-lit */
+:root[data-night='true'] {
+  --bg: #1d1712;
+  --surface: #2a2119;
+  --surface-2: #34291f;
+  --ink: #f6ead9;
+  --ink-soft: #c2ae98;
+  --line: #4a3c2d;
+  --accent: #f0a04b;
+  --accent-ink: #f6bd7a;
+  --accent-soft: #4a3720;
+  --on-accent: #2a1a08;
+  --chip-bg: #43352a;
+  --chip-ink: #f3dcc0;
+  --open-bg: #1f3a26;
+  --open-ink: #8fdca0;
+  --closed-bg: #442823;
+  --closed-ink: #f0aaa0;
+  --hero-bg: linear-gradient(155deg, #4a3322 0%, #2f2118 70%, #241912 100%);
+  --hero-ink: #fbeedb;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 6px 20px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 14px 34px rgb(0 0 0 / 0.5);
+}
+
+:root[data-night='true'][data-theme='hot'] {
+  --bg: #0f2423;
+  --surface: #17302e;
+  --surface-2: #1d3b38;
+  --line: #2b4f4b;
+  --accent: #4fd1be;
+  --accent-ink: #7fe3d3;
+  --accent-soft: #1f4a45;
+  --hero-bg: linear-gradient(155deg, #1c5a63 0%, #14414a 70%, #0f2f36 100%);
+}
+
+:root[data-night='true'][data-theme='rain'] {
+  --bg: #121a24;
+  --surface: #1b2634;
+  --surface-2: #233245;
+  --line: #34475c;
+  --accent: #ffc56b;
+  --accent-ink: #ffd89a;
+  --accent-soft: #4a3d20;
+  --hero-bg: linear-gradient(160deg, #34495f 0%, #243448 60%, #1a2634 100%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+}
+
+html[data-night='true'] {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  transition: background 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.15s ease;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.btn--primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.btn--ghost {
+  border-color: var(--line);
+  background: transparent;
+  color: var(--ink);
+  padding: 6px 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

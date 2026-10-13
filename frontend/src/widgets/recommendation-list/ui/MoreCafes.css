@@ -1,0 +1,54 @@
+.more-cafes {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+}
+
+.more-cafes__toggle {
+  gap: 8px;
+  padding: 10px 22px;
+  background: var(--surface);
+}
+
+.more-cafes__chevron {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.more-cafes__chevron[data-open='true'] {
+  transform: rotate(180deg);
+}
+
+.more-cafes__panel {
+  display: grid;
+  gap: 14px;
+  justify-items: center;
+  width: 100%;
+  animation: more-cafes-in 0.25s ease both;
+}
+
+.more-cafes__items {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@keyframes more-cafes-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .more-cafes__panel {
+    animation: none;
+  }
+
+  .more-cafes__chevron {
+    transition: none;
+  }
+}

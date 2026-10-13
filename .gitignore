@@ -1,0 +1,99 @@
+# ---------------------------------------------------------------------------
+# aicafe: what must never be committed. Sections: secrets, generated files,
+# data dumps, tool caches, editors/OS, Claude Code local files.
+# ---------------------------------------------------------------------------
+
+# --- Secrets and credentials ------------------------------------------------
+# KMA / Naver keys, DB and admin passwords, AWS settings. Real values live in the
+# Kubernetes Secret `aicafe-backend` and in untracked env files, never in git.
+.env
+.env.*
+!.env.example
+*.env
+!*.env.example
+# deploy-frontend skill: <frontend>/.deploy/<env>.env (bucket, distribution id, AWS profile)
+.deploy/
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+kubeconfig
+*.kubeconfig
+# a Kubernetes Secret manifest written out by hand
+*secret*.yaml
+*secret*.yml
+!**/secret-example*.yaml
+
+# --- Terraform (infra roots created by the terraform-scaffold skill) ---------
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# --- Python (backend) --------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.import_linter_cache/
+.coverage
+.coverage.*
+htmlcov/
+.hypothesis/
+
+# --- Node / Vite (frontend) --------------------------------------------------
+node_modules/
+dist/
+dist-ssr/
+.vite/
+coverage/
+*.tsbuildinfo
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Flutter (mobile app, when it exists) -------------------------------------
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+mobile/**/build/
+
+# --- Data dumps and crawl output ---------------------------------------------
+# `scripts/export_data.sh` writes a pg_dump; crawls leave logs. Cafe data and review
+# text from Naver stay out of the repository.
+*.sql.gz
+*.dump
+*.dump.gz
+*.log
+logs/
+
+# --- Editors and OS ----------------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.iml
+*.suo
+*.sw?
+*~
+
+# --- Claude Code local files (the shared .claude/ rules, hooks and skills ARE tracked)
+.claude/settings.local.json
+.claude/worktrees/
+CLAUDE.local.md

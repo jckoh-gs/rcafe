@@ -1,0 +1,11 @@
+# For people committing without Claude. Merge into the repository root .pre-commit-config.yaml
+# and adjust the path to .tflint.hcl if the infra directory is not "infra/".
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.109.2
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+        args: ["--hook-config=--retry-once-with-cleanup=true", "--tf-init-args=-backend=false"]
+      - id: terraform_tflint
+        args: ["--args=--config=__GIT_WORKING_DIR__/infra/.tflint.hcl"]

@@ -1,0 +1,13 @@
+# Production overlay: pins the image names/tags. Edit `newName`/`newTag` (or let the deploy-k3s
+# skill set them) for the registry in use.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+images:
+  - name: aicafe-backend
+    newName: 121.143.126.21:5000/aicafe-backend
+    newTag: "0.2.2"
+  - name: aicafe-frontend
+    newName: 121.143.126.21:5000/aicafe-frontend
+    newTag: "0.2.2"

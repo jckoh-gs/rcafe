@@ -1,0 +1,41 @@
+# What the API pod may do in this namespace so the admin page can "run now": create a Job (copied from
+# the nightly CronJob), read that CronJob, and list pods to see whether a collector is working.
+# Nothing else: it cannot read Secrets, change Deployments, or touch other namespaces.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: aicafe-api
+  labels:
+    app.kubernetes.io/name: aicafe-api
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: aicafe-collector-launcher
+  labels:
+    app.kubernetes.io/name: aicafe-api
+rules:
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create"]
+  - apiGroups: ["batch"]
+    resources: ["cronjobs"]
+    resourceNames: ["aicafe-collector"]
+    verbs: ["get"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: aicafe-api-collector-launcher
+  labels:
+    app.kubernetes.io/name: aicafe-api
+subjects:
+  - kind: ServiceAccount
+    name: aicafe-api
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: aicafe-collector-launcher

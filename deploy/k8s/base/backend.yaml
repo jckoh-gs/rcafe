@@ -1,0 +1,80 @@
+# aicafe API. Needs the Secret `aicafe-backend` (created out of band, never committed):
+#   AICAFE_DATABASE_URL  postgresql+asyncpg://<user>:<password>@aicafe-db:5432/aicafe
+#   AICAFE_KMA_AUTH_KEY  KMA API Hub key
+#   AICAFE_ADMIN_USER / AICAFE_ADMIN_PASSWORD / AICAFE_ADMIN_SESSION_KEY  admin page sign-in
+#       (without them the admin API stays off; `deploy.sh secrets` generates them)
+apiVersion: v1
+kind: Service
+metadata:
+  name: aicafe-backend
+  labels:
+    app.kubernetes.io/name: aicafe-backend
+spec:
+  selector:
+    app.kubernetes.io/name: aicafe-backend
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aicafe-backend
+  labels:
+    app.kubernetes.io/name: aicafe-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: aicafe-backend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: aicafe-backend
+    spec:
+      serviceAccountName: aicafe-api  # may create collector Jobs (admin-rbac.yaml)
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+        - name: migrate
+          image: aicafe-backend
+          command: ["alembic", "upgrade", "head"]
+          envFrom:
+            - secretRef:
+                name: aicafe-backend
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: {cpu: 50m, memory: 128Mi}
+            limits: {memory: 256Mi}
+      containers:
+        - name: api
+          image: aicafe-backend
+          ports:
+            - name: http
+              containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: aicafe-backend
+          readinessProbe:
+            httpGet: {path: /healthz, port: http}
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: {path: /healthz, port: http}
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests: {cpu: 100m, memory: 192Mi}
+            limits: {memory: 512Mi}

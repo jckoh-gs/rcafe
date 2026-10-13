@@ -1,0 +1,43 @@
+# Template: ${BACKEND_URL} is filled in from the environment when the container starts.
+# Serves the built SPA and proxies /api to the backend Service (same origin, no CORS needed).
+server {
+    listen 8080;
+    server_name _;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    gzip on;
+    gzip_types text/css application/javascript application/json image/svg+xml;
+
+    include /etc/nginx/snippets/security-headers.conf;
+
+    # Resolve the backend at request time, so nginx still starts (and recovers) if the API is not up yet.
+    include /etc/nginx/snippets/resolver.conf;
+
+    location /api/ {
+        set $backend ${BACKEND_URL};
+        proxy_pass $backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 60s;
+    }
+
+    location /healthz {
+        access_log off;
+        return 200 "ok\n";
+    }
+
+    # Hashed build assets never change.
+    location /assets/ {
+        include /etc/nginx/snippets/security-headers.conf;
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        try_files $uri =404;
+    }
+
+    location / {
+        include /etc/nginx/snippets/security-headers.conf;
+        add_header Cache-Control "no-cache";
+        try_files $uri /index.html;
+    }
+}

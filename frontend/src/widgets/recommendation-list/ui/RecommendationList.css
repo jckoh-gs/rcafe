@@ -1,0 +1,86 @@
+.reco-list {
+  display: grid;
+  gap: 16px;
+}
+
+.reco-list__items {
+  display: grid;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: opacity 0.2s ease;
+}
+
+.reco-list__items[data-loading='true'] {
+  opacity: 0.55;
+}
+
+.reco-skeleton {
+  height: 340px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(90deg, var(--surface), var(--surface-2), var(--surface));
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.reco-state {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 36px 20px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.reco-state p {
+  margin: 0;
+}
+
+.reco-state__title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+.reco-state .btn {
+  margin-top: 8px;
+}
+
+.reco-notice {
+  margin: 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.reco-notice--error {
+  background: var(--closed-bg);
+  color: var(--closed-ink);
+}
+
+.reco-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reco-skeleton {
+    animation: none;
+  }
+}
+
+.reco-state .request-collection {
+  margin-top: 6px;
+}

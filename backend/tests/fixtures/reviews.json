@@ -1,0 +1,288 @@
+{
+  "ROOT_QUERY": {
+    "__typename": "Query",
+    "visitorReviews({\"input\":{\"bookingBusinessId\":null,\"businessId\":\"1000000001\",\"businessType\":\"restaurant\",\"cidList\":[\"220036\",\"220052\",\"220563\"],\"getReactions\":true,\"getTrailer\":true,\"getUserStats\":true,\"includeContent\":true,\"includeReceiptPhotos\":true,\"isPhotoUsed\":false,\"item\":\"0\",\"size\":10}})": {
+      "__typename": "VisitorReviewsResult",
+      "total": 3104,
+      "items": [
+        {
+          "__ref": "VisitorReview:c7cd9bc37e56c14ba8f7dc2a:true"
+        },
+        {
+          "__ref": "VisitorReview:3c1045d997ae397eb526b306:true"
+        },
+        {
+          "__ref": "VisitorReview:e73be5a5d68315da3d9135c1:true"
+        },
+        {
+          "__ref": "VisitorReview:3edb52c38e7985571327bbfc:true"
+        }
+      ]
+    },
+    "visitorReviews({\"input\":{\"includeContent\":false}})": {
+      "__typename": "VisitorReviewsResult",
+      "total": 197,
+      "items": []
+    }
+  },
+  "VisitorReview:c7cd9bc37e56c14ba8f7dc2a:true": {
+    "__typename": "VisitorReview",
+    "id": "c7cd9bc37e56c14ba8f7dc2a",
+    "reviewId": "88a5feb1981c1a8930f4a820",
+    "rating": 5,
+    "visited": "9.11.금",
+    "created": "9.11.금",
+    "votedKeywords": [
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "coffee_good",
+        "iconUrl": "https://img.test/emoji/coffee.png",
+        "iconCode": "coffee",
+        "name": "커피가 맛있어요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "interior_cool",
+        "iconUrl": "https://img.test/emoji/couch_and_lamp.png",
+        "iconCode": "couch_and_lamp",
+        "name": "인테리어가 멋져요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "photo_good",
+        "iconUrl": "https://img.test/emoji/camera_with_flash.png",
+        "iconCode": "camera_with_flash",
+        "name": "사진이 잘 나와요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "concept_unique",
+        "iconUrl": "https://img.test/emoji/light_bulb.png",
+        "iconCode": "light_bulb",
+        "name": "컨셉이 독특해요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "kind",
+        "iconUrl": "https://img.test/emoji/beating_heart.png",
+        "iconCode": "beating_heart",
+        "name": "친절해요"
+      }
+    ],
+    "item": {
+      "__typename": "VisitorReviewItem",
+      "name": "아메리카노",
+      "code": null,
+      "options": null
+    },
+    "media": [
+      {
+        "__typename": "VisitorReviewMedia",
+        "type": "video",
+        "thumbnail": "https://img.test/sample/thumbnail-14.jpg",
+        "thumbnailRatio": "portrait",
+        "class": null,
+        "videoId": "770ABE7E6118DC8E620180D796929FE252A9",
+        "videoUrl": "vod3://sample/video",
+        "trailerUrl": "https://img.test/sample/trailerUrl-15.jpg"
+      }
+    ],
+    "thumbnail": null,
+    "body": "아이스 아메리카노가 시원하고 깔끔해서 더운 날 마시기 좋았어요. 산미가 적당했습니다."
+  },
+  "VisitorReview:3c1045d997ae397eb526b306:true": {
+    "__typename": "VisitorReview",
+    "id": "3c1045d997ae397eb526b306",
+    "reviewId": "e63cb5666d3cd34f65f480a0",
+    "rating": 5,
+    "visited": "10.7.수",
+    "created": "10.7.수",
+    "votedKeywords": [
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "dessert_good",
+        "iconUrl": "https://img.test/emoji/cake.png",
+        "iconCode": "cake",
+        "name": "디저트가 맛있어요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "special_menu",
+        "iconUrl": "https://img.test/emoji/cook.png",
+        "iconCode": "cook",
+        "name": "특별한 메뉴가 있어요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "types_various",
+        "iconUrl": "https://img.test/emoji/green_heart.png",
+        "iconCode": "green_heart",
+        "name": "종류가 다양해요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "outdoor_good",
+        "iconUrl": "https://img.test/emoji/sun.png",
+        "iconCode": "sun",
+        "name": "야외공간이 멋져요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "kind",
+        "iconUrl": "https://img.test/emoji/beating_heart.png",
+        "iconCode": "beating_heart",
+        "name": "친절해요"
+      }
+    ],
+    "item": {
+      "__typename": "VisitorReviewItem",
+      "name": "크로아상",
+      "code": null,
+      "options": null
+    },
+    "media": [
+      {
+        "__typename": "VisitorReviewMedia",
+        "type": "image",
+        "thumbnail": "https://img.test/sample/thumbnail-16.jpg",
+        "thumbnailRatio": "square",
+        "class": "notReceipt",
+        "videoId": null,
+        "videoUrl": null,
+        "trailerUrl": null
+      }
+    ],
+    "thumbnail": "https://img.test/sample/thumbnail-17.jpg",
+    "body": "비 오는 날 따뜻한 라떼를 마셨는데 고소하고 부드러웠어요. 분위기도 차분해요."
+  },
+  "VisitorReview:e73be5a5d68315da3d9135c1:true": {
+    "__typename": "VisitorReview",
+    "id": "e73be5a5d68315da3d9135c1",
+    "reviewId": "8283332e32f3ee67f9c66838",
+    "rating": 5,
+    "visited": "9.12.토",
+    "created": "9.12.토",
+    "votedKeywords": [
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "dessert_good",
+        "iconUrl": "https://img.test/emoji/cake.png",
+        "iconCode": "cake",
+        "name": "디저트가 맛있어요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "drink_good",
+        "iconUrl": "https://img.test/emoji/juice.png",
+        "iconCode": "juice",
+        "name": "음료가 맛있어요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "special_menu",
+        "iconUrl": "https://img.test/emoji/cook.png",
+        "iconCode": "cook",
+        "name": "특별한 메뉴가 있어요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "bread_good",
+        "iconUrl": "https://img.test/emoji/bread.png",
+        "iconCode": "bread",
+        "name": "빵이 맛있어요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "interior_cool",
+        "iconUrl": "https://img.test/emoji/couch_and_lamp.png",
+        "iconCode": "couch_and_lamp",
+        "name": "인테리어가 멋져요"
+      }
+    ],
+    "item": {
+      "__typename": "VisitorReviewItem",
+      "name": "딸기바스크",
+      "code": null,
+      "options": null
+    },
+    "media": [
+      {
+        "__typename": "VisitorReviewMedia",
+        "type": "image",
+        "thumbnail": "https://img.test/sample/thumbnail-18.jpg",
+        "thumbnailRatio": "square",
+        "class": "notReceipt",
+        "videoId": null,
+        "videoUrl": null,
+        "trailerUrl": null
+      }
+    ],
+    "thumbnail": "https://img.test/sample/thumbnail-19.jpg",
+    "body": "물론! 너무 광고 같은 느낌 말고 두 가지 말투로 바꿔볼게요. 인테리어가 좋아요."
+  },
+  "VisitorReview:3edb52c38e7985571327bbfc:true": {
+    "__typename": "VisitorReview",
+    "id": "3edb52c38e7985571327bbfc",
+    "reviewId": "45a5d8d3c4039e068e7f6f1d",
+    "rating": 5,
+    "visited": "10.5.월",
+    "created": "10.5.월",
+    "votedKeywords": [
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "coffee_good",
+        "iconUrl": "https://img.test/emoji/coffee.png",
+        "iconCode": "coffee",
+        "name": "커피가 맛있어요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "dessert_good",
+        "iconUrl": "https://img.test/emoji/cake.png",
+        "iconCode": "cake",
+        "name": "디저트가 맛있어요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "store_clean",
+        "iconUrl": "https://img.test/emoji/sparkles.png",
+        "iconCode": "sparkles",
+        "name": "매장이 청결해요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "kind",
+        "iconUrl": "https://img.test/emoji/beating_heart.png",
+        "iconCode": "beating_heart",
+        "name": "친절해요"
+      },
+      {
+        "__typename": "VisitorReviewVotedKeyword",
+        "code": "interior_cool",
+        "iconUrl": "https://img.test/emoji/couch_and_lamp.png",
+        "iconCode": "couch_and_lamp",
+        "name": "인테리어가 멋져요"
+      }
+    ],
+    "item": {
+      "__typename": "VisitorReviewItem",
+      "name": "디카페인 아메",
+      "code": null,
+      "options": null
+    },
+    "media": [
+      {
+        "__typename": "VisitorReviewMedia",
+        "type": "image",
+        "thumbnail": "https://img.test/sample/thumbnail-20.jpg",
+        "thumbnailRatio": "portrait",
+        "class": "notReceipt",
+        "videoId": null,
+        "videoUrl": null,
+        "trailerUrl": null
+      }
+    ],
+    "thumbnail": "https://img.test/sample/thumbnail-21.jpg",
+    "body": "맛있어요"
+  }
+}

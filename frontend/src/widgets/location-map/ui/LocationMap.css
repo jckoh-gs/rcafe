@@ -1,0 +1,63 @@
+.location-map {
+  display: grid;
+  gap: 8px;
+}
+
+.location-map__canvas {
+  height: 340px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  /* keep Leaflet panes below sticky UI */
+  position: relative;
+  z-index: 0;
+}
+
+.location-map__hint {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+}
+
+.map-pin {
+  background: none;
+  border: 0;
+}
+
+.map-pin__head {
+  position: absolute;
+  top: 0;
+  left: 2px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--accent);
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.35);
+}
+
+.map-pin__head::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: var(--on-accent);
+}
+
+.map-cafe {
+  background: none;
+  border: 0;
+}
+
+.map-cafe span {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #3b2a1e;
+  color: #fff;
+  font: 700 0.95rem/1 var(--font-serif);
+  border: 2px solid #fff;
+  box-shadow: 0 3px 8px rgb(0 0 0 / 0.35);
+}
